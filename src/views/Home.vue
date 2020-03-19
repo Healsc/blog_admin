@@ -75,7 +75,7 @@ export default {
 }
 .home{
   z-index: 999;
-  background-color: #545C64;
+  background-color: #000;
   position: absolute;
   top: 0;
   left: 0;
