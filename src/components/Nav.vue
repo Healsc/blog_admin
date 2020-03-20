@@ -17,8 +17,8 @@
               <span>文章管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">文章列表</el-menu-item>
-              <el-menu-item index="1-2">添加文章</el-menu-item>
+              <el-menu-item index="1-1" @click="$router.push('/articleList')">文章列表</el-menu-item>
+              <el-menu-item index="1-2" @click="$router.push('/addArticle')">添加文章</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 

@@ -20,7 +20,18 @@ const URL = {
     updataMajor:SERVERURL + "about/updataMajor",
     getTypes:SERVERURL + 'type/getTypes',
     delType:SERVERURL + 'type/delType',
-    addType:SERVERURL + 'type/addType'
+    addType:SERVERURL + 'type/addType',
+    getArticleList:SERVERURL + 'article/getArticleList',
+    addArticle:SERVERURL + "article/addArticle",
+    getArticleDetail:SERVERURL + "article/getArticleDetail",
+    updataIntroduction:SERVERURL + "article/updataIntroduction",
+    updataContent:SERVERURL + "article/updataContent",
+    updatadescription:SERVERURL + "article/updatadescription",
+    updataBcImgUrl:SERVERURL + "article/updataBcImgUrl",
+    updataTitle:SERVERURL+ "article/updataTitle",
+    updataTypes:SERVERURL+ "article/updataTypes",
+    updataTime:SERVERURL + "article/updataTime",
+    updataAuthor:SERVERURL + "article/updataAuthor"
 };
 
 export default URL;
