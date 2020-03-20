@@ -17,7 +17,10 @@ const URL = {
     updataTel:SERVERURL + 'about/updataTel',
     updataSchool:SERVERURL + "about/updataSchool",
     updataSchoolEN:SERVERURL + "about/updataSchoolEN",
-    updataMajor:SERVERURL + "about/updataMajor"
+    updataMajor:SERVERURL + "about/updataMajor",
+    getTypes:SERVERURL + 'type/getTypes',
+    delType:SERVERURL + 'type/delType',
+    addType:SERVERURL + 'type/addType'
 };
 
 export default URL;
