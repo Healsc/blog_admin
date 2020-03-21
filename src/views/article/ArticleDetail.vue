@@ -77,7 +77,12 @@
 import axios from "axios";
 import url from "@/service.config.js";
 import showdown from "showdown";
+import { mapState } from "vuex";
+import { Message } from "element-ui";
 export default {
+  computed: {
+    ...mapState(["userInfo"])
+  },
   data() {
     return {
       articleDetail: "",
@@ -241,7 +246,18 @@ export default {
     }
   },
   created() {
-    this.getArticleDetail();
+     if (JSON.stringify(this.userInfo) === "{}") {
+        Message({
+              type: "info",
+              message: "请登录!"
+            });
+      setTimeout(() => {
+        this.$router.push("/");
+      }, 1000);
+    } else {
+      this.getArticleDetail();
+    }
+    
   },
   mounted() {}
 };

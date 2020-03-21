@@ -39,7 +39,8 @@ const URL = {
   updataWorkTime: SERVERURL + "works/updataWorkTime",
   updataWorkDescription: SERVERURL + "works/updataWorkDescription",
   updataWorkUrl: SERVERURL + "works/updataWorkUrl",
-  delWork: SERVERURL + "works/delWork"
+  delWork: SERVERURL + "works/delWork",
+  addWork:SERVERURL + "works/addWork"
 };
 
 export default URL;

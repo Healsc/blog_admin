@@ -2,7 +2,7 @@
   <div class="works">
     <ul>
       <li  v-for="(item,index) in worksList" :key="index">
-        <h3>title:{{item.title}}</h3>
+        <h3>{{item.title}}</h3>
         <div>
           <span>{{item.time}}</span>
           <span class="btn">
@@ -47,7 +47,7 @@ export default {
         });
     },
     delWork(id) {
-      MessageBox.confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+      MessageBox.confirm("确定删除, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

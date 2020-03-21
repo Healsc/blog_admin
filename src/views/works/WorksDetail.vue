@@ -41,7 +41,11 @@
 <script>
 import axios from "axios";
 import url from "@/service.config.js";
+import {mapState} from 'vuex';
 export default {
+    computed: {
+        ...mapState(['userInfo'])
+    },
   data() {
     return {
       id: this.$route.params.id,
@@ -54,6 +58,9 @@ export default {
     };
   },
   created() {
+      if(JSON.stringify(this.userInfo) === "{}"){
+          this.$router.push('/')
+      }
     this.getWorkDetail();
   },
   methods: {

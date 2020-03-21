@@ -1,6 +1,6 @@
 <template>
   <div class="article">
-    <h1>article</h1>
+   
     <div class="main-content">
       <div class="part">
         <span>author</span>
@@ -51,7 +51,11 @@ import showdown from "showdown";
 import axios from "axios";
 import url from "@/service.config.js";
 import { MessageBox } from "element-ui";
+import {mapState} from 'vuex'
 export default {
+  computed: {
+    ...mapState(['userInfo'])
+  },
   data() {
     return {
       type: "",
@@ -65,7 +69,11 @@ export default {
       articleList: ""
     };
   },
-  created() {},
+  created() {
+    if(JSON.stringify(this.userInfo) === "{}"){
+      this.$router.push('/')
+    }
+  },
   methods: {
     /* zhuanhuan() {
       var content = this.articleList.content;

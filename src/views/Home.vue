@@ -21,6 +21,7 @@
 import axios from "axios";
 import url from "@/service.config.js";
 import { MessageBox } from "element-ui";
+import { mapActions } from "vuex";
 export default {
   name: "Home",
   components: {},
@@ -33,6 +34,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["loginAction"]),
     // 登录的处理方法
     loginHandler() {
       axios({
@@ -44,15 +46,16 @@ export default {
         }
       })
         .then(res => {
+          console.log(res)
           if (res.data.code == 202) {
             MessageBox.alert("用户名错误");
           } else if (res.data.code == 201) {
             MessageBox.alert("密码错误");
           } else if (res.data.code == 200) {
-            
-            setTimeout(()=>{
-              this.$router.push('/aboutMe')
-            },2000)
+             this.loginAction(res.data.userInfo);
+            setTimeout(() => {
+              this.$router.push("/aboutMe");
+            }, 2000);
           }
         })
         .catch(err => {
@@ -73,13 +76,13 @@ export default {
 .login {
   text-align: center;
 }
-.home{
+.home {
   z-index: 999;
   background-color: #000;
   position: absolute;
   top: 0;
   left: 0;
-  bottom:0;
+  bottom: 0;
   right: 0;
 }
 </style>

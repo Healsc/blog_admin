@@ -11,7 +11,7 @@
           </span>
         </div>
         <div>{{item.time}}</div>
-        <div>description:{{item.description}}</div>
+        <div>{{item.description}}</div>
       </li>
     </ul>
   </div>
@@ -22,6 +22,7 @@ import axios from "axios";
 import url from "@/service.config.js";
 import { MessageBox } from "element-ui";
 import { Message } from "element-ui";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -30,7 +31,20 @@ export default {
     };
   },
   created() {
-    this.getArticleList();
+    if (JSON.stringify(this.userInfo) === "{}") {
+        Message({
+              type: "info",
+              message: "请登录!"
+            });
+      setTimeout(() => {
+        this.$router.push("/");
+      }, 1000);
+    } else {
+      this.getArticleList();
+    }
+  },
+  computed: {
+    ...mapState(["userInfo"])
   },
   methods: {
     getArticleList() {
@@ -39,13 +53,12 @@ export default {
         method: "get"
       })
         .then(res => {
-          // console.log(res);
           this.articleList = res.data;
         })
         .catch(() => {});
     },
     delArticle(id) {
-      MessageBox.confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+      MessageBox.confirm("确定删除, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
@@ -83,7 +96,7 @@ export default {
 <style lang="scss" scoped>
 .article {
   margin-left: 1rem;
-  padding: 0 0.1rem 0 0.1rem;
+  padding: 0.1rem;
   margin-top: 60px;
 }
 ul {

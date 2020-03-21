@@ -21,42 +21,26 @@
     <div class="part">
       <span class="part-name">tel:</span>
       <span class="part-before">{{aboutInfo.tel}}</span>
-      <input class="part-after" v-model="tel" type="text" placeholder="请输入修改后内容"  />
-   <el-button @click="updataTel(aboutInfo.tel,tel)" type="success" size="mini">保存</el-button>
+      <input class="part-after" v-model="tel" type="text" placeholder="请输入修改后内容" />
+      <el-button @click="updataTel(aboutInfo.tel,tel)" type="success" size="mini">保存</el-button>
     </div>
     <div class="part">
       <span class="part-name">school:</span>
       <span class="part-before">{{aboutInfo.school}}</span>
-      <input
-        class="part-after"
-        v-model="school"
-        type="text"
-        placeholder="请输入修改后内容"
-       
-      />
+      <input class="part-after" v-model="school" type="text" placeholder="请输入修改后内容" />
       <el-button @click="updataSchool(aboutInfo.school,school)" type="success" size="mini">保存</el-button>
     </div>
     <div class="part">
       <span class="part-name">schoolEN:</span>
       <span class="part-before">{{aboutInfo.schoolEN}}</span>
-      <input
-        class="part-after"
-        v-model="schoolEN"
-        type="text"
-        placeholder="请输入修改后内容"
-      />
-       <el-button @click="updataSchoolEN(aboutInfo.schoolEN,schoolEN)" type="success" size="mini">保存</el-button>
+      <input class="part-after" v-model="schoolEN" type="text" placeholder="请输入修改后内容" />
+      <el-button @click="updataSchoolEN(aboutInfo.schoolEN,schoolEN)" type="success" size="mini">保存</el-button>
     </div>
     <div class="part">
       <span class="part-name">major:</span>
       <span class="part-before">{{aboutInfo.major}}</span>
-      <input
-        class="part-after"
-        v-model="major"
-        type="text"
-        placeholder="请输入修改后内容"
-      />
-       <el-button @click="updataMajor(aboutInfo.major,major)" type="success" size="mini">保存</el-button>
+      <input class="part-after" v-model="major" type="text" placeholder="请输入修改后内容" />
+      <el-button @click="updataMajor(aboutInfo.major,major)" type="success" size="mini">保存</el-button>
     </div>
     <div class="aboutMe">
       <h3>aboutMe</h3>
@@ -124,7 +108,11 @@
 import axios from "axios";
 import url from "@/service.config.js";
 import { MessageBox } from "element-ui";
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState(["userInfo"])
+  },
   data() {
     return {
       aboutInfo: "",
@@ -147,119 +135,137 @@ export default {
     };
   },
   created() {
-    this.getAbout();
+    if (JSON.stringify(this.userInfo) === "{}") {
+      this.$router.push("/");
+    } else {
+      this.getAbout();
+    }
   },
   methods: {
-    updataName(before,after){
+    updataName(before, after) {
       axios({
-        url:url.updataName,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataName,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.name = "";
-        this.getAbout();
-      }).catch(err=>{
-        console.log(err)
       })
+        .then(() => {
+          this.name = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    updataEmail(before,after){
+    updataEmail(before, after) {
       axios({
-        url:url.updataEmail,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataEmail,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.email = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.email = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
-     updataQq(before,after){
+    updataQq(before, after) {
       axios({
-        url:url.updataQq,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataQq,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.qq = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.qq = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
-     updataTel(before,after){
+    updataTel(before, after) {
       axios({
-        url:url.updataTel,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataTel,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.tel = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.tel = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
-    updataSchool(before,after){
+    updataSchool(before, after) {
       axios({
-        url:url.updataSchool,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataSchool,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.school = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.school = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
-      updataSchoolEN(before,after){
+    updataSchoolEN(before, after) {
       axios({
-        url:url.updataSchoolEN,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataSchoolEN,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.schoolEN = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.schoolEN = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
-       updataMajor(before,after){
+    updataMajor(before, after) {
       axios({
-        url:url.updataMajor,
-        method:'post',
-        data:{
-          before:before,
-          after:after
+        url: url.updataMajor,
+        method: "post",
+        data: {
+          before: before,
+          after: after
         }
-      }).then(()=>{
-        this.major = "";
-        this.getAbout();
-      }).catch(err=>{
-         MessageBox.alert("更新失败");
-        console.log(err)
       })
+        .then(() => {
+          this.major = "";
+          this.getAbout();
+        })
+        .catch(err => {
+          MessageBox.alert("更新失败");
+          console.log(err);
+        });
     },
     getAbout() {
       axios({
@@ -278,7 +284,7 @@ export default {
         })
         .catch(() => {});
     },
-    
+
     /* 删除abouMe信息开始 */
     delAboutMe(item, index) {
       axios({
@@ -468,7 +474,7 @@ export default {
 .part {
   display: flex;
   margin-right: 1.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border-bottom: 1px solid rgba($color: #333, $alpha: 0.2);
   &-name {
     flex-grow: 1;
@@ -483,6 +489,7 @@ export default {
 
 .aboutMe {
   margin-bottom: 0.1rem;
+
   &-info {
     li {
       width: 60%;
@@ -491,7 +498,7 @@ export default {
         right: 2rem;
       }
       border-bottom: 1px solid rgba($color: #333, $alpha: 0.2);
-      margin-bottom: 5px;
+      margin-bottom: 20px;
     }
   }
   .add-bout {
@@ -514,6 +521,7 @@ export default {
     margin-bottom: 4px;
     border-bottom: 1px solid rgba($color: #333, $alpha: 0.2);
     width: 60%;
+    margin-bottom: 20px;
   }
   &-del {
     position: absolute;

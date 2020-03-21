@@ -1,6 +1,5 @@
 <template>
   <div class="type">
-    <h1>type</h1>
     <ul>
       <li v-for="(item,index) in types" :key="index">
         <span class="type-info">{{item.typeName}}</span>
@@ -19,7 +18,11 @@
 import axios from "axios";
 import url from "@/service.config.js";
 import { MessageBox } from "element-ui";
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState(["userInfo"])
+  },
   data() {
     return {
       types: [],
@@ -27,7 +30,11 @@ export default {
     };
   },
   created() {
-    this.getTypes();
+    if (JSON.stringify(this.userInfo) === "{}") {
+      this.$router.push("/");
+    } else {
+      this.getTypes();
+    }
   },
   methods: {
     getTypes() {
@@ -84,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 .type {
   margin-left: 1rem;
-  padding: 0 0.1rem 0 0.1rem;
+  padding: 0.1rem;
   margin-top: 60px;
 }
 ul {
