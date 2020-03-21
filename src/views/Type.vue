@@ -85,6 +85,7 @@ export default {
 .type {
   margin-left: 1rem;
   padding: 0 0.1rem 0 0.1rem;
+  margin-top: 60px;
 }
 ul {
   li {

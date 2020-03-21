@@ -251,6 +251,7 @@ export default {
 .article {
   margin-left: 1rem;
   padding: 0.1rem;
+  margin-top: 60px;
 }
 .part {
   margin-bottom: 10px;

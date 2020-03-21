@@ -463,7 +463,7 @@ export default {
 .about {
   margin-left: 1rem;
   padding: 0.1rem;
-  
+  margin-top: 60px;
 }
 .part {
   display: flex;

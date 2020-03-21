@@ -51,7 +51,7 @@ export default {
           } else if (res.data.code == 200) {
             
             setTimeout(()=>{
-              this.$router.push('/adminHome')
+              this.$router.push('/aboutMe')
             },2000)
           }
         })

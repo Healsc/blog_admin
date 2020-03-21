@@ -140,6 +140,7 @@ export default {
   margin-left: 1rem;
   padding: 0.1rem;
   font-size: 16px;
+  margin-top: 60px;
 }
 .part {
   margin-bottom: 10px;

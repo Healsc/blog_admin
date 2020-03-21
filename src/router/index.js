@@ -15,10 +15,6 @@ const routes = [
     name: 'About',
     component: () => import('../views/About.vue')
   },{
-    path:"/adminHome",
-    name:'AdminHome',
-    component:()=>import('@/views/AdminHome.vue')
-  },{
     path:"/aboutMe",
     name:"AboutMe",
     component:()=>import('@/views/AboutMe.vue')
@@ -30,7 +26,16 @@ const routes = [
     path:"/worksList",
     name:"WorksList",
     component:()=>import('@/views/works/WorksList.vue')
+  },  {
+    path:"/worksDetail/:id",
+    name:"WorksDetail",
+    component:()=>import('@/views/works/WorksDetail.vue')
   },{
+    path:"/addWork",
+    name:"AddWork",
+    component:()=>import('@/views/works/AddWork.vue')
+  }
+  ,{
     path:"/articleList",
     name:"ArticleList",
     component:()=>import('@/views/article/ArticleList.vue')

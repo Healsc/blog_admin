@@ -3,7 +3,7 @@
     <div class="container">
       <el-col class="nav">
         <el-menu
-          default-active="0"
+          default-active="2"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -28,8 +28,8 @@
               <span>作品管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">作品列表</el-menu-item>
-              <el-menu-item index="1-2">添加作品</el-menu-item>
+              <el-menu-item index="2-1" @click="$router.push('/worksList')">作品列表</el-menu-item>
+              <el-menu-item index="2-2" @click="$router.push('/addWork')">添加作品</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -85,11 +85,14 @@ export default {
   border-right: 0;
 }
 .header {
+  position: fixed;
+  top:0;
   width: 100%;
   background-color: #545c64;
   height: 60px;
   line-height: 60px;
   margin-left: 0.7rem;
   text-align: center;
+  z-index: 99;
 }
 </style>

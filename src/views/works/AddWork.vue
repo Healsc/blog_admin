@@ -12,6 +12,7 @@
 
 <style lang="scss" scoped>
 .works{
-    margin-left: 0.7rem;
+     margin-left: 1rem;
+    margin-top: 60px;
 }
 </style>
