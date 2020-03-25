@@ -1,4 +1,4 @@
-const SERVERURL = "http://localhost:3000/";
+const SERVERURL = "http://localhost:3002/";
 
 const URL = {
   loginUser: SERVERURL + "user/loginUser",
